@@ -1,0 +1,377 @@
+@import url("normalize.css");
+@import url("fonts/font-awesome.css");
+@import url("../libraries/codemirror/lib/codemirror.css");
+@import url("../libraries/codemirror/addon/fold/foldgutter.css");
+@import url("../libraries/codemirror/addon/lint/lint.css");
+@import url("../libraries/codemirror/addon/dialog/dialog-custom.css");
+@import url("../libraries/codemirror/addon/hint/show-hint.css");
+@import url("../libraries/codemirror/addon/tern/tern.css");
+@import url("../libraries/codemirror/addon/merge/merge.css");
+@import url("../libraries/codemirror/addon/scroll/simplescrollbars.css");
+@import url("../libraries/codemirror/addon/search/matchesonscrollbar.css");
+@import url("../libraries/alertifyjs/css/alertify.min.css");
+@import url("../libraries/alertifyjs/css/themes/default.min.css");
+@import url("../libraries/codemirror/inlet.css");
+
+@import url("polyui.css");
+@import url("jqueryminicolors.css");
+@import url("../libraries/codemirror/theme/3024-day.css");
+@import url("../libraries/codemirror/theme/3024-night.css");
+@import url("../libraries/codemirror/theme/abcdef.css");
+@import url("../libraries/codemirror/theme/ambiance.css");
+@import url("../libraries/codemirror/theme/base16-dark.css");
+@import url("../libraries/codemirror/theme/bespin.css");
+@import url("../libraries/codemirror/theme/base16-light.css");
+@import url("../libraries/codemirror/theme/blackboard.css");
+@import url("../libraries/codemirror/theme/cobalt.css");
+@import url("../libraries/codemirror/theme/colorforth.css");
+@import url("../libraries/codemirror/theme/dracula.css");
+@import url("../libraries/codemirror/theme/eclipse.css");
+@import url("../libraries/codemirror/theme/elegant.css");
+@import url("../libraries/codemirror/theme/erlang-dark.css");
+@import url("../libraries/codemirror/theme/hopscotch.css");
+@import url("../libraries/codemirror/theme/icecoder.css");
+@import url("../libraries/codemirror/theme/isotope.css");
+@import url("../libraries/codemirror/theme/lesser-dark.css");
+@import url("../libraries/codemirror/theme/liquibyte.css");
+@import url("../libraries/codemirror/theme/material.css");
+@import url("../libraries/codemirror/theme/mbo.css");
+@import url("../libraries/codemirror/theme/mdn-like.css");
+@import url("../libraries/codemirror/theme/midnight.css");
+@import url("../libraries/codemirror/theme/monokai.css");
+@import url("../libraries/codemirror/theme/neat.css");
+@import url("../libraries/codemirror/theme/neo.css");
+@import url("../libraries/codemirror/theme/night.css");
+@import url("../libraries/codemirror/theme/panda-syntax.css");
+@import url("../libraries/codemirror/theme/paraiso-dark.css");
+@import url("../libraries/codemirror/theme/paraiso-light.css");
+@import url("../libraries/codemirror/theme/pastel-on-dark.css");
+@import url("../libraries/codemirror/theme/railscasts.css");
+@import url("../libraries/codemirror/theme/rubyblue.css");
+@import url("../libraries/codemirror/theme/seti.css");
+@import url("../libraries/codemirror/theme/solarized.css");
+@import url("../libraries/codemirror/theme/the-matrix.css");
+@import url("../libraries/codemirror/theme/tomorrow-night-bright.css");
+@import url("../libraries/codemirror/theme/tomorrow-night-eighties.css");
+@import url("../libraries/codemirror/theme/ttcn.css");
+@import url("../libraries/codemirror/theme/twilight.css");
+@import url("../libraries/codemirror/theme/vibrant-ink.css");
+@import url("../libraries/codemirror/theme/xq-dark.css");
+@import url("../libraries/codemirror/theme/xq-light.css");
+@import url("../libraries/codemirror/theme/yeti.css");
+@import url("../libraries/codemirror/theme/zenburn.css");
+
+@font-face {
+  font-family: Lato;
+  src: url("fonts/Lato-Light.ttf");
+}
+
+html, body {
+  height: 100%;
+}
+body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+a {
+  cursor: pointer;
+}
+a:active, a:focus {
+  outline: 0;
+}
+
+/* Menubar */
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: auto;
+  bottom: 0;
+  padding: 10px 5px 0 5px;
+}
+header a,
+header > label {
+  cursor: pointer;
+  text-decoration: none;
+/*  padding: 0 5px;*/
+  margin: 0 8px;
+  font: 2em sans;
+  opacity: .7;
+  transition: opacity 0.3s;
+}
+a:active {
+  outline: none;
+}
+header a:not(.about-dialog a),
+header > label {
+  float: left;
+}
+#charmenu {
+  position: absolute;
+  top: 0;
+  left: 170px;
+  right: 64px;
+  height: 50px;
+  padding: 4px 5px 50px 5px;
+  white-space: nowrap;
+  overflow-y: hidden;
+  overflow-x: auto;
+}
+#charmenu a {
+  display: inline-block;
+  text-decoration: none;
+  font: 1em arial, sans-serif;
+  padding: 10px 14px;
+  margin: 4px 0.25em;
+  float: none;
+  opacity: 1;
+}
+.hide-about {
+  font-size: 2em;
+  margin: 0 7px;
+}
+
+/* Dialogs */
+.dialog a {
+  padding: 0;
+  text-align: center;
+  font: 16px arial;
+}
+.dialog .sp-cancel {
+  font: 12px arial;
+  margin: 5px 5px 0 0;
+  padding: 2px;
+}
+.dialog h3 {
+  padding-top: 20px;
+  margin: 20px;
+}
+.dialog .large {
+  font: 2em sans;
+}
+.metaboxes > .heading {
+  background: transparent;
+}
+.headtxt {
+  color: #B591D0;
+}
+.toolbox, 
+.about-dialog {
+  display: none;
+  position: absolute;
+  top: 60px;
+  left: 0;
+  padding: 5px;
+  text-align: center;
+  overflow: auto;
+  z-index: 100;
+  bottom: auto;
+}
+.dialog-bg {
+  z-index: 9999!important;
+}
+.socialdialog {
+  padding: 2em;
+  border-radius: 0.4em;
+}
+.column > div {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: auto;
+  font-size: 16px;
+}
+nav {
+  display: table-cell;
+  vertical-align: middle;
+  z-index: 1;
+}
+
+/* Libraries & about Dialog */
+.about-dialog {
+  left: auto;
+  right: 15px;
+  width: 400px;
+  padding: 5px 5px 15px 5px;
+  overflow-x: hidden;
+}
+.about-dialog a {
+  margin: 0;
+  padding: 0;
+}
+.about-dialog h1 {
+  margin: 15px 0;
+}
+
+#tools:checked ~ .toolbox {
+  display: block;
+}
+#open-about:checked ~ .about-dialog {
+  display: block;
+}
+
+/* Toolbox Queries */
+@media all and (min-height:380px) {
+  .toolbox {
+    bottom: auto;
+  }
+}
+@media all and (max-height:380px) {
+  .toolbox {
+    bottom: 40px;
+  }
+}
+/* About Queries */
+@media all and (max-height:313px) {
+  .about-dialog {
+    bottom: 25px;
+  }
+}
+/* Charmenu Queries */
+@media all and (max-width:500px) {
+  .hide-about {
+    display: none;
+  }
+  #charmenu {
+    right: 0;
+  }
+}
+
+/* Editor */
+.CodeMirror {
+  position: absolute;
+  top: 60px;
+  display: block;
+  width: 100vw;
+  z-index: 0;
+}
+.CodeMirror, .CodeMirror-gutters {
+  height: calc(100vh - 60px);
+/*  height: 100vh!important;*/
+}
+.lint-error {
+  font-family: arial;
+  font-size: 70%;
+  padding: 2px 5px 3px;
+}
+.lint-error-icon {
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 0 3px;
+  margin-right: 7px;
+}
+
+/* Preloader dialog */
+.preloader {
+  background: #fff;
+  background: rgba(255, 255, 255, 0.68);
+  z-index: 99999!important;
+  color: #4E92A2;
+}
+.fixedfill {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+/* Center preloader content horizontally and vertically */
+.table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+.cell {
+  display: table-cell;
+  vertical-align: middle;
+}
+/* Preloader animation */
+.spinner {
+  margin: 30px auto 0;
+  width: 70px;
+  text-align: center;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background: #4E92A2;
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* Variable Classes */
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.fn {
+  float: none;
+}
+.block {
+  display: block;
+}
+.iblock {
+  display: inline-block;
+}
+.hide {
+  display: none;
+}
+.pointer {
+  cursor: pointer;
+}
+.nopadding {
+  padding: 0;
+}
+.nomar {
+  margin: 0;
+}
+.tl {
+  text-align: left;
+}
+.tr {
+  text-align: right;
+}
+.invisible {
+  position: absolute;
+  top: -100em;
+  left: -100em;
+}
+.txtcenter {
+  text-align: center;
+}

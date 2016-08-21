@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>WeaveShare - Share code real-time in your browser</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+    <meta name="description" content="Share code snippets and collaborate with developers with this free code sharing tool.">
+    <meta name="author" content="Michael Schwartz">
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#2882CA">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#2882CA">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="WeaveShare">
+    <link rel="apple-touch-icon" href="img/256.png">
+    <link rel="icon" type="image/vnd.microsoft.icon" href="img/favicon.ico">
+    <link rel="SHORTCUT ICON" href="img/favicon.ico">
+    <link rel="stylesheet" href="css/theme.css" />
+    <script src="https://togetherjs.com/togetherjs-min.js"></script>
+    <script src="libraries/prefixfree/prefixfree.min.js"></script>
+    <script src="libraries/jquery/jquery.js"></script>
+    <script src="libraries/alertifyjs/alertify.min.js"></script>
+
+    <script src="libraries/codemirror/lib/codemirror.js"></script>
+    <script src="libraries/codemirror/mode/apl/apl.js"></script>
+    <script src="libraries/codemirror/mode/asciiarmor/asciiarmor.js"></script>
+    <script src="libraries/codemirror/mode/asn.1/asn.1.js"></script>
+    <script src="libraries/codemirror/mode/asterisk/asterisk.js"></script>
+    <script src="libraries/codemirror/mode/brainfuck/brainfuck.js"></script>
+    <script src="libraries/codemirror/mode/clike/clike.js"></script>
+    <script src="libraries/codemirror/mode/clojure/clojure.js"></script>
+    <script src="libraries/codemirror/mode/cmake/cmake.js"></script>
+    <script src="libraries/codemirror/mode/cobol/cobol.js"></script>
+    <script src="libraries/codemirror/mode/coffeescript/coffeescript.js"></script>
+    <script src="libraries/codemirror/mode/commonlisp/commonlisp.js"></script>
+    <script src="libraries/codemirror/mode/crystal/crystal.js"></script>
+    <script src="libraries/codemirror/mode/css/css.js"></script>
+    <script src="libraries/codemirror/mode/cypher/cypher.js"></script>
+    <script src="libraries/codemirror/mode/d/d.js"></script>
+    <script src="libraries/codemirror/mode/dart/dart.js"></script>
+    <script src="libraries/codemirror/mode/diff/diff.js"></script>
+    <script src="libraries/codemirror/mode/django/django.js"></script>
+    <script src="libraries/codemirror/mode/dockerfile/dockerfile.js"></script>
+    <script src="libraries/codemirror/mode/dtd/dtd.js"></script>
+    <script src="libraries/codemirror/mode/dylan/dylan.js"></script>
+    <script src="libraries/codemirror/mode/ebnf/ebnf.js"></script>
+    <script src="libraries/codemirror/mode/ecl/ecl.js"></script>
+    <script src="libraries/codemirror/mode/eiffel/eiffel.js"></script>
+    <script src="libraries/codemirror/mode/elm/elm.js"></script>
+    <script src="libraries/codemirror/mode/erlang/erlang.js"></script>
+    <script src="libraries/codemirror/mode/factor/factor.js"></script>
+    <script src="libraries/codemirror/mode/fcl/fcl.js"></script>
+    <script src="libraries/codemirror/mode/forth/forth.js"></script>
+    <script src="libraries/codemirror/mode/fortran/fortran.js"></script>
+    <script src="libraries/codemirror/mode/gas/gas.js"></script>
+    <script src="libraries/codemirror/mode/gfm/gfm.js"></script>
+    <script src="libraries/codemirror/mode/gherkin/gherkin.js"></script>
+    <script src="libraries/codemirror/mode/go/go.js"></script>
+    <script src="libraries/codemirror/mode/groovy/groovy.js"></script>
+    <script src="libraries/codemirror/mode/haml/haml.js"></script>
+    <script src="libraries/codemirror/mode/handlebars/handlebars.js"></script>
+    <script src="libraries/codemirror/mode/haskell/haskell.js"></script>
+    <script src="libraries/codemirror/mode/haskell-literate/haskell-literate.js"></script>
+    <script src="libraries/codemirror/mode/haxe/haxe.js"></script>
+    <script src="libraries/codemirror/mode/htmlembedded/htmlembedded.js"></script>
+    <script src="libraries/codemirror/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="libraries/codemirror/mode/http/http.js"></script>
+    <script src="libraries/codemirror/mode/idl/idl.js"></script>
+    <script src="libraries/codemirror/mode/jade/jade.js"></script>
+    <script src="libraries/codemirror/mode/javascript/javascript.js"></script>
+    <script src="libraries/codemirror/mode/jinja2/jinja2.js"></script>
+    <script src="libraries/codemirror/mode/jsx/jsx.js"></script>
+    <script src="libraries/codemirror/mode/julia/julia.js"></script>
+    <script src="libraries/codemirror/mode/livescript/livescript.js"></script>
+    <script src="libraries/codemirror/mode/lua/lua.js"></script>
+    <script src="libraries/codemirror/mode/markdown/markdown.js"></script>
+    <script src="libraries/codemirror/mode/mathematica/mathematica.js"></script>
+    <script src="libraries/codemirror/mode/mbox/mbox.js"></script>
+    <script src="libraries/codemirror/mode/mirc/mirc.js"></script>
+    <script src="libraries/codemirror/mode/mllike/mllike.js"></script>
+    <script src="libraries/codemirror/mode/modelica/modelica.js"></script>
+    <script src="libraries/codemirror/mode/mscgen/mscgen.js"></script>
+    <script src="libraries/codemirror/mode/mumps/mumps.js"></script>
+    <script src="libraries/codemirror/mode/nginx/nginx.js"></script>
+    <script src="libraries/codemirror/mode/nsis/nsis.js"></script>
+    <script src="libraries/codemirror/mode/ntriples/ntriples.js"></script>
+    <script src="libraries/codemirror/mode/octave/octave.js"></script>
+    <script src="libraries/codemirror/mode/oz/oz.js"></script>
+    <script src="libraries/codemirror/mode/pascal/pascal.js"></script>
+    <script src="libraries/codemirror/mode/pegjs/pegjs.js"></script>
+    <script src="libraries/codemirror/mode/perl/perl.js"></script>
+    <script src="libraries/codemirror/mode/php/php.js"></script>
+    <script src="libraries/codemirror/mode/pig/pig.js"></script>
+    <script src="libraries/codemirror/mode/powershell/powershell.js"></script>
+    <script src="libraries/codemirror/mode/properties/properties.js"></script>
+    <script src="libraries/codemirror/mode/protobuf/protobuf.js"></script>
+    <script src="libraries/codemirror/mode/puppet/puppet.js"></script>
+    <script src="libraries/codemirror/mode/python/python.js"></script>
+    <script src="libraries/codemirror/mode/q/q.js"></script>
+    <script src="libraries/codemirror/mode/r/r.js"></script>
+    <script src="libraries/codemirror/mode/rpm/rpm.js"></script>
+    <script src="libraries/codemirror/mode/rst/rst.js"></script>
+    <script src="libraries/codemirror/mode/ruby/ruby.js"></script>
+    <script src="libraries/codemirror/mode/rust/rust.js"></script>
+    <script src="libraries/codemirror/mode/sas/sas.js"></script>
+    <script src="libraries/codemirror/mode/sass/sass.js"></script>
+    <script src="libraries/codemirror/mode/scheme/scheme.js"></script>
+    <script src="libraries/codemirror/mode/shell/shell.js"></script>
+    <script src="libraries/codemirror/mode/sieve/sieve.js"></script>
+    <script src="libraries/codemirror/mode/slim/slim.js"></script>
+    <script src="libraries/codemirror/mode/smalltalk/smalltalk.js"></script>
+    <script src="libraries/codemirror/mode/smarty/smarty.js"></script>
+    <script src="libraries/codemirror/mode/solr/solr.js"></script>
+    <script src="libraries/codemirror/mode/soy/soy.js"></script>
+    <script src="libraries/codemirror/mode/sparql/sparql.js"></script>
+    <script src="libraries/codemirror/mode/spreadsheet/spreadsheet.js"></script>
+    <script src="libraries/codemirror/mode/sql/sql.js"></script>
+    <script src="libraries/codemirror/mode/stex/stex.js"></script>
+    <script src="libraries/codemirror/mode/stylus/stylus.js"></script>
+    <script src="libraries/codemirror/mode/swift/swift.js"></script>
+    <script src="libraries/codemirror/mode/tcl/tcl.js"></script>
+    <script src="libraries/codemirror/mode/textile/textile.js"></script>
+    <script src="libraries/codemirror/mode/tiddlywiki/tiddlywiki.js"></script>
+    <script src="libraries/codemirror/mode/tiki/tiki.js"></script>
+    <script src="libraries/codemirror/mode/toml/toml.js"></script>
+    <script src="libraries/codemirror/mode/tornado/tornado.js"></script>
+    <script src="libraries/codemirror/mode/troff/troff.js"></script>
+    <script src="libraries/codemirror/mode/ttcn/ttcn.js"></script>
+    <script src="libraries/codemirror/mode/ttcn-cfg/ttcn-cfg.js"></script>
+    <script src="libraries/codemirror/mode/turtle/turtle.js"></script>
+    <script src="libraries/codemirror/mode/twig/twig.js"></script>
+    <script src="libraries/codemirror/mode/vb/vb.js"></script>
+    <script src="libraries/codemirror/mode/vbscript/vbscript.js"></script>
+    <script src="libraries/codemirror/mode/velocity/velocity.js"></script>
+    <script src="libraries/codemirror/mode/verilog/verilog.js"></script>
+    <script src="libraries/codemirror/mode/vhdl/vhdl.js"></script>
+    <script src="libraries/codemirror/mode/vue/vue.js"></script>
+    <script src="libraries/codemirror/mode/webidl/webidl.js"></script>
+    <script src="libraries/codemirror/mode/xml/xml.js"></script>
+    <script src="libraries/codemirror/mode/xquery/xquery.js"></script>
+    <script src="libraries/codemirror/mode/yacas/yacas.js"></script>
+    <script src="libraries/codemirror/mode/yaml/yaml.js"></script>
+    <script src="libraries/codemirror/mode/yaml-frontmatter/yaml-frontmatter.js"></script>
+    <script src="libraries/codemirror/mode/z80/z80.js"></script>
+    
+    <script src="libraries/codemirror/addon/comment/comment.js"></script>
+    <script src="libraries/codemirror/addon/comment/continuecomment.js"></script>
+    <script src="libraries/codemirror/addon/dialog/dialog.js"></script>
+    <script src="libraries/codemirror/addon/display/palette.js"></script>
+    <script src="libraries/codemirror/addon/display/panel.js"></script>
+    <script src="libraries/codemirror/addon/display/rulers.js"></script>
+    <script src="libraries/codemirror/addon/edit/closetag.js"></script>
+    <script src="libraries/codemirror/addon/edit/matchbrackets.js"></script>
+    <script src="libraries/codemirror/addon/fold/brace-fold.js"></script>
+    <script src="libraries/codemirror/addon/fold/comment-fold.js"></script>
+    <script src="libraries/codemirror/addon/fold/foldcode.js"></script>
+    <script src="libraries/codemirror/addon/fold/foldgutter.css"></script>
+    <script src="libraries/codemirror/addon/fold/foldgutter.js"></script>
+    <script src="libraries/codemirror/addon/fold/indent-fold.js"></script>
+    <script src="libraries/codemirror/addon/fold/markdown-fold.js"></script>
+    <script src="libraries/codemirror/addon/fold/xml-fold.js"></script>
+    <script src="libraries/codemirror/addon/search/search.js"></script>
+    <script src="libraries/codemirror/addon/search/searchcursor.js"></script>
+    <script src="libraries/codemirror/addon/search/jump-to-line.js"></script>
+    <script src="libraries/codemirror/addon/selection/active-line.js"></script>
+    <script src="libraries/codemirror/addon/hint/anyword-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/css-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/html-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/javascript-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/show-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/sql-hint.js"></script>
+    <script src="libraries/codemirror/addon/hint/xml-hint.js"></script>
+    <script src="libraries/codemirror/addon/lint/lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/html-lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/css-lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/javascript-lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/coffeescript-lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/json-lint.js"></script>
+    <script src="libraries/codemirror/addon/lint/yaml-lint.js"></script>
+
+    <script src="libraries/codemirror/addon/mode/loadmode.js"></script>
+    <script src="libraries/codemirror/addon/mode/multiplex_test.js"></script>
+    <script src="libraries/codemirror/addon/mode/multiplex.js"></script>
+    <script src="libraries/codemirror/addon/mode/overlay.js"></script>
+    <script src="libraries/codemirror/addon/mode/simple.js"></script>
+       
+    <script src="libraries/codemirror/markdown.js"></script>
+    <script src="libraries/codemirror/continuelist.js"></script>
+    <script src="libraries/codemirror/emmet.js"></script>
+    <script src="libraries/codemirror/addon/tern/tern.js"></script>
+
+    <script src="https://ternjs.net/node_modules/acorn/dist/acorn.js"></script>
+    <script src="https://ternjs.net/node_modules/acorn/dist/acorn_loose.js"></script>
+    <script src="https://ternjs.net/node_modules/acorn/dist/walk.js"></script>
+    <script src="https://ternjs.net/doc/demo/polyfill.js"></script>
+    <script src="https://ternjs.net/lib/signal.js"></script>
+    <script src="https://ternjs.net/lib/tern.js"></script>
+    <script src="https://ternjs.net/lib/def.js"></script>
+    <script src="https://ternjs.net/lib/comment.js"></script>
+    <script src="https://ternjs.net/lib/infer.js"></script>
+    <script src="https://ternjs.net/plugin/doc_comment.js"></script>
+
+    <script src="libraries/codemirror/mode/meta.js"></script>
+    <script src="libraries/codemirror/htmlhint.js"></script>
+    <script src="libraries/codemirror/csslint.js"></script>
+    <script src="libraries/codemirror/jshint.js"></script>
+    <script src="libraries/codemirror/coffee-script.js"></script>
+    <script src="libraries/codemirror/coffeelint.js"></script>
+
+    <script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="iggmggls28vuvif"></script>
+
+    <script>
+      TogetherJSConfig_siteName="WeaveShare";
+      TogetherJSConfig_toolName="Teamwork";
+      TogetherJSConfig_suppressJoinConfirmation = true;
+      TogetherJSConfig_includeHashInUrl = true;
+      TogetherJSConfig_dontShowClicks = true;
+    </script>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <header>
+      <!-- Checkbox's for Menu Dropdowns -->
+      <input id="tools" type="checkbox" name="menubar" class="invisible">
+      <input id="open-about" type="checkbox" name="menubar" class="invisible">
+      
+      <!-- Hidden Textbox (Detects Active Editor) -->
+      <input type="text" class="fl hide" data-action="activeEditor" value="editor">
+     
+      <!-- Float Left -->
+      <label for="tools" class="pointer">
+        <i class="fa fa-wrench"></i>
+      </label>
+      <div class="dialog toolbox">
+        <!-- Website Title -->
+        <div class="txtcenter metaboxes">
+          <input class="heading txtcenter block" type="text" data-action="weavename" placeholder="weave name" value="weave name">
+          <input class="heading block" type="number" min="8" step="1" value="14" data-editor="fontSize">
+        </div><br>
+        
+        <h4 class="nomar">
+          Select a theme:
+        </h4><br>
+        <select data-select="theme">
+          <option selected>default</option>
+          <option>3024-day</option>
+          <option>3024-night</option>
+          <option>abcdef</option>
+          <option>ambiance</option>
+          <option>base16-dark</option>
+          <option>base16-light</option>
+          <option>bespin</option>
+          <option>blackboard</option>
+          <option>cobalt</option>
+          <option>colorforth</option>
+          <option>dracula</option>
+          <option>eclipse</option>
+          <option>elegant</option>
+          <option>erlang-dark</option>
+          <option>hopscotch</option>
+          <option>icecoder</option>
+          <option>isotope</option>
+          <option>lesser-dark</option>
+          <option>liquibyte</option>
+          <option>material</option>
+          <option>mbo</option>
+          <option>mdn-like</option>
+          <option>midnight</option>
+          <option>monokai</option>
+          <option>neat</option>
+          <option>neo</option>
+          <option>night</option>
+          <option>panda-syntax</option>
+          <option>paraiso-dark</option>
+          <option>paraiso-light</option>
+          <option>pastel-on-dark</option>
+          <option>railscasts</option>
+          <option>rubyblue</option>
+          <option>seti</option>
+          <option>solarized dark</option>
+          <option>solarized light</option>
+          <option>the-matrix</option>
+          <option>tomorrow-night-bright</option>
+          <option>tomorrow-night-eighties</option>
+          <option>ttcn</option>
+          <option>twilight</option>
+          <option>vibrant-ink</option>
+          <option>xq-dark</option>
+          <option>xq-light</option>
+          <option>yeti</option>
+          <option>zenburn</option>
+        </select><br><br>
+        
+        <h4 class="nomar">
+          Select a mode:
+        </h4><br>
+        <select data-select="mode">
+          <!-- plain text has a null mode-->
+          <option value="text/apl">APL</option>
+          <option value="application/pgp">Asciiarmor</option>
+          <option value="text/x-ttcn-asn">ASN</option>
+          <option value="text/asp">ASP.NET</option>
+<!--          <option value="application/x-aspx">ASP.NET</option>-->
+          <option value="text/x-asterisk">Asterisk</option>
+          <option value="text/x-brainfuck">Brainfuck</option>
+          <option value="text/x-csrc">C</option>
+          <option value="text/x-cassandra">Cassandra</option>
+          <option value="text/x-csharp">C#</option>
+          <option value="text/x-c++src">C++</option>
+          <option value="text/x-ceylon">Ceylon</option>
+          <option value="text/x-clojure">Clojure</option>
+          <option value="text/x-cmake">CMake</option>
+          <option value="text/x-cobol">Cobol</option>
+          <option value="text/x-coffeescript">CoffeeScript</option>
+          <option value="text/x-common-lisp">Common Lisp</option>
+          <option value="text/css">CSS</option>
+          <option value="text/x-crystal">Crystal</option>
+          <option value="application/x-cypher-query">Cypher</option>
+          <option value="text/x-cython">Cython</option>
+          <option value="text/x-d">D</option>
+          <option value="application/dart">Dart</option>
+          <option value="text/x-diff">Diff</option>
+          <option value="text/x-django">Django</option>
+          <option value="text/x-dockerfile">Dockerfile</option>
+          <option value="application/xml-dtd">DTD</option>
+          <option value="text/x-dylan">Dylan</option>
+          <option value="text/x-ecl">ECL</option>
+          <option value="text/x-eiffel">Eiffel</option>
+          <option value="text/x-elm">Elm</option>
+          <option value="application/x-ejs">Embedded Javascript</option>
+          <option value="text/x-erlang">Erlang</option>
+          <option value="text/x-fsharp">F#</option>
+          <option value="text/x-factor">Factor</option>
+          <option value="text/x-fcl">FCL</option>
+          <option value="text/x-forth">Forth</option>
+          <option value="text/x-fortran">Fortran</option>
+          <option value="text/x-gas">Gas</option>
+          <option value="text/x-gfm">Github-flavor Markdown</option>
+          <option value="text/x-feature">Gherkin</option>
+          <option value="text/x-go">Go</option>
+          <option value="text/x-groovy">Groovy</option>
+          <option value="text/x-haml">HAML</option>
+          <option value="text/html">HTML (mixed mode)</option>
+          <option value="application/x-httpd-php">HTML with PHP code</option>
+          <option value="text/x-haskell">Haskell</option>
+          <option value="text/x-literate-haskell">Haskell literate</option>
+          <option value="text/x-haxe">Haxe</option>
+          <option value="text/x-hive">Hive</option>
+          <option value="message/http">HTTP</option>
+          <option value="text/x-hxml">Hxml</option>
+          <option value="text/x-idl">IDL</option>
+          <option value="text/x-jade">Jade</option>
+          <option value="application/json">JSON</option>
+          <option value="text/x-java">Java</option>
+          <option value="text/javascript">JavaScript</option>
+          <option value="application/x-jsp">JavaServer Pages</option>
+          <option value="text/jsx">JSX</option>
+          <option value="text/x-julia">Julia</option>
+          <option value="text/x-livescript">Livescript</option>
+          <option value="text/x-lua">Lua</option>
+          <option value="text/x-markdown">Markdown</option>
+          <option value="text/x-mathematica">Mathematica</option>
+          <option value="application/mbox">mbox</option>
+          <option value="text/mirc">mIRC</option>
+          <option value="text/x-mariadb">MariaDB</option>
+          <option value="text/x-modelica">Modelica</option>
+          <option value="text/x-mscgen">MscGen</option>
+          <option value="text/x-msgenny">MsGenny</option>
+          <option value="text/x-mssql">MsSQL</option>
+          <option value="mumps">MUMPS</option>
+          <option value="text/x-mysql">MySQL</option>
+          <option value="text/nginx">NGINX</option>
+          <option value="text/x-nsis">NSIS</option>
+          <option value="text/n-triples">NTriples</option>
+          <option value="text/x-ocaml">OCaml</option>
+          <option value="text/x-octave">Octave</option>
+          <option value="text/x-objectivec">Objective-C</option>
+          <option value="text/x-oz">Oz</option>
+          <option value="text/x-pascal">Pascal</option>
+          <option value="pegjs">PEG.js</option>
+          <option value="text/x-perl">Perl</option>
+          <option value="text/x-php">PHP</option>
+          <option value="text/x-pig">Pig</option>
+          <option value="plain text" selected>Plain Text</option>
+          <option value="application/x-powershell">PowerShell</option>
+          <option value="text/x-properties">Properties</option>
+          <option value="text/x-ini">Properties (ini)</option>
+          <option value="text/x-protobuf">ProtoBuf</option>
+          <option value="text/x-puppet">Puppet</option>
+          <option value="text/x-python">Python</option>
+          <option value="text/x-q">Q</option>
+          <option value="text/x-rsrc">R</option>
+          <option value="text/x-rpm-changes">RPM (changes)</option>
+          <option value="text/x-rpm-spec">RPM (spec)</option>
+          <option value="text/x-rst">reStructuredText</option>
+          <option value="text/x-ruby">Ruby</option>
+          <option value="text/x-rustsrc">Rust</option>
+          <option value="text/x-sas">SAS</option>
+          <option value="text/x-sass">SASS</option>
+          <option value="text/x-scala">Scala</option>
+          <option value="text/x-scheme">Scheme</option>
+          <option value="text/x-sh">Shell</option>
+          <option value="application/sieve">Sieve</option>
+          <option value="application/x-slim">SLIM</option>
+          <option value="text/x-stsrc">Smalltalk</option>
+          <option value="smarty">Smarty</option>
+          <option value="text/x-solr">Solr</option>
+          <option value="text/x-soy">Soy (Closure Template)</option>
+          <option value="application/sparql-query">SPARQL</option>
+          <option value="text/x-spreadsheet">Spreadsheet</option>
+          <option value="text/x-sql">SQL</option>
+          <option value="text/x-squirrel">Squirrel</option>
+          <option value="text/x-stex">sTeX</option>
+          <option value="text/x-styl">Stylus</option>
+          <option value="text/x-swift">Swift</option>
+          <option value="text/x-tcl">Tcl</option>
+          <option value="text/x-textile">Textile</option>
+          <option value="text/x-tiddlywiki">TiddlyWiki</option>
+          <option value="tiki">Tiki wiki</option>
+          <option value="text/x-toml">TOML</option>
+          <option value="text/x-tornado">Tornado</option>
+          <option value="troff">troff</option>
+          <option value="text/x-ttcn">TTCN</option>
+          <option value="text/x-ttcn-cfg">TTCN-CFG</option>
+          <option value="text/turtle">Turtle</option>
+          <option value="text/typescript">Typescript</option>
+          <option value="text/x-vb">VB.NET</option>
+          <option value="text/vbscript">VBScript</option>
+          <option value="text/velocity">Velocity</option>
+          <option value="text/x-verilog">Verilog</option>
+          <option value="text/x-vhdl">VHDL</option>
+          <option value="text/x-vue">Vue.js</option>
+          <option value="text/x-webidl">Web IDL</option>
+          <option value="application/xml">XML</option>
+          <option value="application/xquery">XQuery</option>
+          <option value="text/x-xu">Xù</option>
+          <option value="text/x-yacas">yacas</option>
+          <option value="text/x-yaml">YAML</option>
+          <option value="yaml-frontmatter">YAML front matter</option>
+          <option value="text/x-z80">Z80 assembly</option>
+        </select><br><br>
+
+        <div>
+          <a class="fl">
+            <label for="loadfile" class="pointer">Load Local</label>
+          </a>
+          <a class="fr" data-action="open-dropbox">
+            Load Dropbox
+          </a>
+        </div><br><br>
+
+        <div>
+          <a class="fl" data-action="search">
+            Find
+          </a>
+          <a class="fn" data-action="toggle_comment">
+            Comment
+          </a>
+          <a class="fr" data-action="replace">
+            Replace
+          </a><br>
+
+          <a class="fl" data-action="replaceall">
+            Replace All
+          </a>
+          <a class="fr" data-action="gotoline">
+            Jump To Line
+          </a>
+        </div><br>
+
+        <!-- Load Files Into Editor -->
+        <div class="hide">
+          <input id="loadfile" type="file" accept="text/*">
+        </div>
+      </div>
+      <label id="collaborate" class="skip">
+        <i class="fa fa-group"></i>
+      </label>
+      <a class="pointer" data-action="save-gist">
+        <i class="fa fa-save"></i>
+      </a>
+
+      <!-- Code Section -->
+      <div id="charmenu">
+        <a id="restartapp"><span class="fa fa-refresh"></span></a>
+        <a id="undo"><span class="fa fa-undo"></span></a>
+        <a id="redo"><span class="fa fa-repeat"></span></a>
+        <a id="tabindent">+ tab</a>
+        <a id="taboutdent">- tab</a>
+        <a id="zeninit">zen</a>
+        <a id="charsym1">&lt;&gt;</a>
+        <a id="charsym2">{}</a>
+        <a id="charsym3">""</a>
+        <a id="charsym4">''</a>
+        <a data-add="sym">+</a>
+        <a data-add="sym">-</a>
+        <a data-add="sym">.</a>
+        <a id="charsym5">()</a>
+        <a data-add="sym">:</a>
+        <a data-add="sym">;</a>
+        <a data-add="sym">_</a>
+        <a id="charsym6">[]</a>
+        <a data-add="sym">|</a>
+        <a data-add="sym">/</a>
+        <a data-add="sym">\</a>
+        <a data-add="sym">?</a>
+        <a data-add="sym">*</a>
+        <a data-add="sym">\n</a>
+        <a data-add="sym">%</a>
+        <a data-add="sym">@</a>
+        <a data-add="sym">=</a>
+        <a data-add="sym">#</a>
+        <a data-add="sym">,</a>
+        <a data-add="sym">!</a>
+        <a data-add="sym">^</a>
+        <a data-add="sym">&amp;</a>
+        <a data-add="sym">$</a>
+        <a data-add="sym">¢</a>
+        <a data-add="sym">£</a>
+        <a data-add="sym">¥</a>
+        <a data-add="sym">€</a>
+        <a data-add="sym">©</a>
+        <a data-add="sym">®</a>
+        <a data-add="sym">™</a>
+      </div>
+
+      <!-- Float Right -->
+      <label for="open-about" class="fr pointer hide-about">
+        <i class="fa fa-question-circle-o"></i>
+      </label>
+      <div class="dialog about-dialog fr">
+        <h1>About WeaveShare</h1>
+
+        WeaveShare is a <a href="http://codeshare.io/" target="_blank">Codeshare</a> clone for mobile devices which enables developers to share code in real-time. Write or paste code in your browser, share the URL, code in real-time with friends and team mates.
+        <br><br>
+
+        WeaveShare was created by <a href="http://mikethedj4.github.io/" target="_blank">Michael Schwartz</a>.
+        <br><br>
+
+        If you have feedback or feature requests, <a href="javascript:alert('github repo coming soon...')">please add/vote here</a>.
+      </div>
+    </header>
+
+    <!-- Editor/Preview -->
+    <input type="checkbox" id="selectEditor" class="invisible">
+    <div id="editor"></div>
+
+    <!-- Share to social networks dialog -->
+    <div class="dialog-bg column hide" data-action="socialdialog">
+      <div>
+        <nav>
+          <div class="grid socialdialog">
+            <div class="grid__col-12 txtcenter socialbtns">
+              <h1>Share your weave with your friends!</h1>
+              <h4 class="nomar" style="color: #888888;">Link:</h4>
+              <input class="txtbox block" data-output="projectURL" />
+
+              <a class="share-facebook" target="_blank">
+                <i class="fa fa-facebook-square"></i>
+              </a>
+              <a class="share-twitter" target="_blank">
+                <i class="fa fa-twitter-square"></i>
+              </a>
+              <a class="share-gplus" target="_blank">
+                <i class="fa fa-google-plus-square"></i>
+              </a>
+              <a class="share-instagram" target="_blank">
+                <i class="fa fa-instagram"></i>
+              </a>
+              <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=BSYGA2RB5ZJCC">
+                <i class="fa fa-cc-paypal"></i>
+              </a>
+              <p>
+                <p>
+                  <a class="btn--warning" data-action="social-cancel">Cancel</a>
+                </p>
+              </p>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+   
+    <script src="lib/inlet.min.js"></script>
+    <script src="weaveshare.js"></script>
+  </body>
+</html>

@@ -1,0 +1,168 @@
+@import url("style.css");
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: transparent;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+::-webkit-scrollbar-thumb {
+  background: #70bcff;
+  border: 0;
+  border-radius: 0;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #70ebff;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #3da4ff;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Menubar */
+header {
+  background: #2882CA;
+}
+header a,
+header > label {
+  color: #fff;
+}
+header a:hover,
+header > label:hover {
+  color: #fff;
+  opacity: 1;
+}
+.active,
+#tools:checked ~ label[for=tools],
+#open-about:checked ~ label[for=open-about] {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+}
+
+#charmenu {
+  color: #797e83;
+}
+#charmenu a {
+  color: #fff;
+  text-shadow: 0 0  0.25em #333;
+  border: 1px solid #2F6288;
+  border-radius: 1em;
+  background: #2E71A5;
+}
+#charmenu a:hover {
+  background: #458FC8;
+  border: 1px solid #2D74AB;
+  opacity: 1;
+}
+#charmenu a:active {
+  background: #366589;
+  border: 1px solid #2F6288;
+}
+
+/* Dialogs */
+.dialog a, h3 {
+  color: #2882CA;
+}
+.dialog a:hover {
+  color: #2882CA;
+}
+.dialog .large, .dialog .heading {
+  margin: 0 10px;
+}
+.heading {
+  font: 1.25em Lato;
+  color: #2882CA;
+}
+.metaboxes > .heading:first-child {
+  margin-top: 5px;
+}
+.metaboxes > .heading {
+  background: #fff;
+  margin-bottom: 15px;
+}
+.metaboxes > [data-output],
+.metaboxes > [data-action=siteauthor],
+.metaboxes > .heading:last-child {
+  margin-bottom: 0;
+}
+.dialog {
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(0, 0, 0);
+}
+.dialog-bg {
+  background: rgb(255, 255, 255);
+  background: rgba(255, 255, 255, 0.25);
+}
+.socialdialog {
+  background: rgb(255, 255, 255);
+}
+.column > div {
+  background: rgb(0, 0, 0);
+  background: rgba(34, 66, 108, 0.5);
+  color: rgb(255, 255, 255);
+}
+
+@media all and (max-width:924px) {
+  .addlibrary-tablets .ldd-menu ul {
+    border-top: 1px solid #DDD!important;
+  }
+}
+@media all and (max-width:530px) {
+  .addabout-tablets .ldd-menu ul {
+    border-top: 1px solid #DDD!important;
+  }
+}
+
+/* Editor */
+.CodeMirror .cm-palette-hint {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: -2px 2px 0 6px;
+  border-radius: 50%;
+  vertical-align: middle;
+  width: 10px;
+  height: 10px;
+  box-shadow: 0 0 1px 2px #fff,
+              0 0 1px 3px #a0a09c;
+}
+.lint-error {
+  background: #ffa;
+  color: #a00;
+}
+.lint-error-icon {
+  color: white;
+  background-color: red;
+}
+
+/* Share to Social Networks */
+.socialbtns {
+  padding-right: 32px;
+}
+.socialbtns a:not(.btn--warning) {
+  font-size: 3em;
+}
+
+/* Textbox for Save Weave Online */
+.txtbox {
+  font-weight: 300;
+  padding: 15px;
+  width: 100%;
+  outline: 0;
+  font-size: 1.125em;
+  margin-bottom: 1.11111em;
+  border: 0;
+  border-bottom: 6px solid #d6d7d9;
+  border-radius: 0.4em;
+  background: #ebecec;
+  color: #000;
+}
