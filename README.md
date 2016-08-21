@@ -33,9 +33,11 @@ To-Do
 Development
 -------------
 
+WeaveShare was created by [Michael Schwartz](http://mikethedj4.github.io/).  
+
 Want to contribute? Great!  
 
-You can submit a pull request or simply share the project :)
+If you have feedback or feature requests, [please add/vote here](https://github.com/mikethedj4/WeaveShare/issues).  
 
 Of course WeaveShare is free and open source, so you can always fork the project and have fun :)
 
