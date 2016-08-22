@@ -613,9 +613,6 @@ inputMode.onchange = function() {
 };
 selectMode();
 
-responsiveUI();
-loadFiles();
-
 var hash = window.location.hash.substring(1);
 function loadgist(gistid) {
   $.ajax({
@@ -736,6 +733,9 @@ document.querySelector("[data-code=clear]").onclick = function() {
   editor.setValue("");
 };
 
+responsiveUI();
+loadFiles();
+initCollab();
 charGeneration();
 shortcutKeys();
 
