@@ -24,6 +24,7 @@ WeaveShare uses a number of open source projects to work properly:
 * [Codemirror](http://codemirror.net/) - awesome web-based text editor
 * [Inlet](https://github.com/mikethedj4/Inlet) - awesome inline color picker and numeric slider for Codemirror
 * [Emmet](http://emmet.io/) - Codemirror Plugin for Zen Coding
+* [AlertifyJS](http://alertifyjs.com/) - For the awesome and stylish alert notification dialogs
 
 To-Do
 -------------
