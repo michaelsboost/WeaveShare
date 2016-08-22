@@ -578,6 +578,8 @@ function selectMode() {
   }
   editor.setOption("mode", mode);
   editor.refresh();
+  editor.setOption("lint", false);
+  editor.setOption("lint", true);
   
   if ((mode === "text/x-markdown") || (mode === "text/x-gfm")) {
     if ($("#function").is(":visible")) {
