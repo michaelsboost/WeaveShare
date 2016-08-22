@@ -29,6 +29,7 @@ WeaveShare uses a number of open source projects to work properly:
 To-Do
 -------------
 
+ - If file is loaded automatically set mode to fit the file type (ex. index.js = javascript)
  - Integrate lints for other languages (haml, livescript, typescript, etc:)
 
 Development
