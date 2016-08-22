@@ -545,7 +545,11 @@ editor.on("change", function() {
   }, 300);
 });
 editor.on("drop", function() {
-  editor.setValue("");
+  localStorage.setItem("editorData", editor.getValue());
+
+  setTimeout(function() {
+    editor.setOption("paletteHints", "true");
+  }, 300);
 });
 
 // Save editor's value
