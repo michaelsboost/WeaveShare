@@ -111,7 +111,8 @@ header > label {
   position: absolute;
   top: 0;
   left: 170px;
-  right: 64px;
+/*  right: 64px;*/
+  right: 0;
   height: 50px;
   padding: 4px 5px 50px 5px;
   white-space: nowrap;
@@ -157,6 +158,7 @@ header > label {
   color: #B591D0;
 }
 .toolbox, 
+.download-dialog, 
 .about-dialog {
   display: none;
   position: absolute;
@@ -190,7 +192,11 @@ nav {
   z-index: 1;
 }
 
-/* Libraries & about Dialog */
+/* Download & About Dialog */
+.download-dialog {
+  width: 270px;
+  left: 125px;
+}
 .about-dialog {
   left: auto;
   right: 15px;
@@ -209,11 +215,46 @@ nav {
 #tools:checked ~ .toolbox {
   display: block;
 }
-#open-about:checked ~ .about-dialog {
+#download:checked ~ .download-dialog {
   display: block;
 }
 
-/* Toolbox Queries */
+/* Download Dialog */
+.download-dialog a {
+  display: block;
+  float: none;
+  text-align: left;
+  padding: 3px 0;
+}
+
+/* Editor Icons for Save and Clear */
+.editoricons {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 50px;
+  height: calc(100vh - 60px);
+  font-size: 2em;
+  text-align: center;
+  overflow: auto;
+}
+.editoricons a {
+  display: block;
+  margin: 10px 0;
+  color: #b3b3b3;
+  transition: 150ms all linear;
+}
+.editoricons a:hover {
+  color: #2882ca;
+}
+.editoricons > .place-bottom {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50px;
+}
+
+/* Navbar Queries */
 @media all and (min-height:380px) {
   .toolbox {
     bottom: auto;
@@ -224,19 +265,19 @@ nav {
     bottom: 40px;
   }
 }
-/* About Queries */
-@media all and (max-height:313px) {
-  .about-dialog {
-    bottom: 25px;
+/* Download Queries */
+@media all and (max-width:530px) {
+  .download-dialog {
+    left: 0;
   }
 }
-/* Charmenu Queries */
-@media all and (max-width:500px) {
-  .hide-about {
-    display: none;
-  }
-  #charmenu {
-    right: 0;
+/* About Queries */
+@media all and (max-height:290px) {
+  .editoricons > .place-bottom {
+    position: static;
+    bottom: auto;
+    right: auto;
+    width: auto;
   }
 }
 
@@ -250,7 +291,9 @@ nav {
 }
 .CodeMirror, .CodeMirror-gutters {
   height: calc(100vh - 60px);
-/*  height: 100vh!important;*/
+}
+.CodeMirror-code {
+  padding-right: 50px;
 }
 .lint-error {
   font-family: arial;

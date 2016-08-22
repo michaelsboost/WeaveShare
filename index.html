@@ -22,6 +22,9 @@
     <script src="libraries/prefixfree/prefixfree.min.js"></script>
     <script src="libraries/jquery/jquery.js"></script>
     <script src="libraries/alertifyjs/alertify.min.js"></script>
+    
+    <script src="lib/Blob.js"></script>
+    <script src="lib/FileSaver.js"></script>
 
     <script src="libraries/codemirror/lib/codemirror.js"></script>
     <script src="libraries/codemirror/mode/apl/apl.js"></script>
@@ -223,10 +226,7 @@
     <header>
       <!-- Checkbox's for Menu Dropdowns -->
       <input id="tools" type="checkbox" name="menubar" class="invisible">
-      <input id="open-about" type="checkbox" name="menubar" class="invisible">
-      
-      <!-- Hidden Textbox (Detects Active Editor) -->
-      <input type="text" class="fl hide" data-action="activeEditor" value="editor">
+      <input id="download" type="checkbox" name="menubar" class="invisible">
      
       <!-- Float Left -->
       <label for="tools" class="pointer">
@@ -477,9 +477,9 @@
       <label id="collaborate" class="skip">
         <i class="fa fa-group"></i>
       </label>
-      <a class="pointer" data-action="save-gist">
+      <label for="download" class="pointer" data-save="gist">
         <i class="fa fa-save"></i>
-      </a>
+      </label>
 
       <!-- Code Section -->
       <div id="charmenu">
@@ -488,32 +488,53 @@
         <a id="redo"><span class="fa fa-repeat"></span></a>
         <a id="tabindent">+ tab</a>
         <a id="taboutdent">- tab</a>
-        <a id="zeninit">zen</a>
-        <a id="charsym1">&lt;&gt;</a>
-        <a id="charsym2">{}</a>
-        <a id="charsym3">""</a>
-        <a id="charsym4">''</a>
-        <a data-add="sym">+</a>
-        <a data-add="sym">-</a>
-        <a data-add="sym">.</a>
-        <a id="charsym5">()</a>
-        <a data-add="sym">:</a>
-        <a data-add="sym">;</a>
-        <a data-add="sym">_</a>
-        <a id="charsym6">[]</a>
-        <a data-add="sym">|</a>
-        <a data-add="sym">/</a>
-        <a data-add="sym">\</a>
-        <a data-add="sym">?</a>
-        <a data-add="sym">*</a>
-        <a data-add="sym">\n</a>
-        <a data-add="sym">%</a>
-        <a data-add="sym">@</a>
-        <a data-add="sym">=</a>
-        <a data-add="sym">#</a>
-        <a data-add="sym">,</a>
-        <a data-add="sym">!</a>
-        <a data-add="sym">^</a>
+        <span class="md-chars hide">
+          <a id="lorem">lorem</a>
+          <a id="bold"><span class="fa fa-bold"></span></a>
+          <a id="italic"><span class="fa fa-italic"></span></a>
+          <a id="strike"><span class="fa fa-strikethrough"></span></a>
+          <a id="anchor"><span class="fa fa-globe"></span></a>
+          <a id="quote"><span class="fa fa-quote-left"></span></a>
+          <a id="code"><span class="fa fa-code"></span></a>
+          <a id="img"><span class="fa fa-picture-o"></span></a>
+          <a id="list-ol"><span class="fa fa-list-ol"></span></a>
+          <a id="list-ul"><span class="fa fa-list-ul"></span></a>
+          <a id="h1">h1</a>
+          <a id="h2">h2</a>
+          <a id="h3">h3</a>
+          <a id="h4">h4</a>
+          <a id="h5">h5</a>
+          <a id="h6">h6</a>
+          <a id="hr"><span class="fa fa-ellipsis-h"></span></a>
+        </span>
+        <span class="main-editor-chars">
+          <a id="zeninit">zen</a>
+          <a id="charsym1">&lt;&gt;</a>
+          <a id="charsym2">{}</a>
+          <a id="charsym3">""</a>
+          <a id="charsym4">''</a>
+          <a data-add="sym">+</a>
+          <a data-add="sym">-</a>
+          <a data-add="sym">.</a>
+          <a id="charsym5">()</a>
+          <a data-add="sym">:</a>
+          <a data-add="sym">;</a>
+          <a data-add="sym">_</a>
+          <a id="charsym6">[]</a>
+          <a data-add="sym">|</a>
+          <a data-add="sym">/</a>
+          <a data-add="sym">\</a>
+          <a data-add="sym">?</a>
+          <a data-add="sym">*</a>
+          <a data-add="sym">\n</a>
+          <a data-add="sym">%</a>
+          <a data-add="sym">@</a>
+          <a data-add="sym">=</a>
+          <a data-add="sym">#</a>
+          <a data-add="sym">,</a>
+          <a data-add="sym">!</a>
+          <a data-add="sym">^</a>
+        </span>
         <a data-add="sym">&amp;</a>
         <a data-add="sym">$</a>
         <a data-add="sym">¢</a>
@@ -523,28 +544,36 @@
         <a data-add="sym">©</a>
         <a data-add="sym">®</a>
         <a data-add="sym">™</a>
-      </div>
-
-      <!-- Float Right -->
-      <label for="open-about" class="fr pointer hide-about">
-        <i class="fa fa-question-circle-o"></i>
-      </label>
-      <div class="dialog about-dialog fr">
-        <h1>About WeaveShare</h1>
-
-        WeaveShare is a <a href="http://codeshare.io/" target="_blank">Codeshare</a> clone for mobile devices which enables developers to share code in real-time. Write or paste code in your browser, share the URL, code in real-time with friends and team mates.
-        <br><br>
-
-        WeaveShare was created by <a href="http://mikethedj4.github.io/" target="_blank">Michael Schwartz</a>.
-        <br><br>
-
-        If you have feedback or feature requests, <a href="https://github.com/mikethedj4/WeaveShare/issues" target="_blank">please add/vote here</a>.
+        <span class="main-editor-chars">
+          <a id="function">function() {}</a>
+        </span>
       </div>
     </header>
 
     <!-- Editor/Preview -->
     <input type="checkbox" id="selectEditor" class="invisible">
     <div id="editor"></div>
+    <div class="editoricons">
+      <!-- Clear Code -->
+      <a data-code="clear">
+        <span class="fa fa-times"></span>
+      </a>
+      <!-- Download Code as File -->
+      <a data-save="file">
+        <span class="fa fa-download"></span>
+      </a>
+      
+      <div class="place-bottom">
+        <!-- Download Code as File -->
+         <a href="https://github.com/mikethedj4/WeaveShare" target="_blank">
+          <span class="fa fa-github"></span>
+        </a>
+        <!-- Donate to the project -->
+        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BSYGA2RB5ZJCC" target="_blank">
+          <span class="fa fa-paypal"></span>
+        </a>
+      </div>
+    </div>
 
     <!-- Share to social networks dialog -->
     <div class="dialog-bg column hide" data-action="socialdialog">
@@ -583,6 +612,7 @@
     </div>
    
     <script src="lib/inlet.min.js"></script>
+    <script src="lib/shortcut.js"></script>
     <script src="weaveshare.js"></script>
   </body>
 </html>

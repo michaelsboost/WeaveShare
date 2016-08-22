@@ -44,7 +44,7 @@ header > label:hover {
 }
 .active,
 #tools:checked ~ label[for=tools],
-#open-about:checked ~ label[for=open-about] {
+#download:checked ~ label[for=download] {
   color: #fff;
   border-bottom: 2px solid #fff;
 }

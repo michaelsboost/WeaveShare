@@ -1,204 +1,298 @@
 var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
-    charGeneration = function() {
+    charGeneration  = function() {
       document.getElementById("restartapp").onclick = function() {
         location.reload(true);
       };
       document.getElementById("undo").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          editor.undo();
-        }
+        editor.undo();
       };
       document.getElementById("redo").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          editor.redo();
-        }
+        editor.redo();
       };
       document.getElementById("tabindent").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          editor.execCommand("indentMore");
-          editor.focus();
-        }
+        editor.execCommand("indentMore");
+        editor.focus();
       };
       document.getElementById("taboutdent").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          editor.execCommand("indentLess");
-          editor.focus();
-        }
+        editor.execCommand("indentLess");
+        editor.focus();
       };
       document.getElementById("zeninit").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          editor.execCommand("emmet.expand_abbreviation_with_tab");
-          editor.focus();
-        }
+        editor.execCommand("emmet.expand_abbreviation_with_tab");
+        editor.focus();
       };
       document.getElementById("charsym1").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange("<>", editor.getCursor());
-            editor.focus();
-            str = ">";
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange("<>", editor.getCursor());
+          editor.focus();
+          str = ">";
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          }
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
         }
       };
       document.getElementById("charsym2").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange("{}", editor.getCursor());
-            editor.focus();
-            str = "}";
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange("{}", editor.getCursor());
+          editor.focus();
+          str = "}";
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          } else {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
+        } else {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("{" + selected_text + "}");
-            editor.focus();
-          }
+          editor.replaceSelection("{" + selected_text + "}");
+          editor.focus();
         }
       };
       document.getElementById("charsym3").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange('""', editor.getCursor());
-            editor.focus();
-            str = '"';
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange('""', editor.getCursor());
+          editor.focus();
+          str = '"';
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          } else {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
+        } else {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection('"' + selected_text + '"');
-            editor.focus();
-          }
+          editor.replaceSelection('"' + selected_text + '"');
+          editor.focus();
         }
       };
       document.getElementById("charsym4").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange("''", editor.getCursor());
-            editor.focus();
-            str = "'";
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange("''", editor.getCursor());
+          editor.focus();
+          str = "'";
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          } else {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
+        } else {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("'" + selected_text + "'");
-            editor.focus();
-          }
+          editor.replaceSelection("'" + selected_text + "'");
+          editor.focus();
         }
       };
       document.getElementById("charsym5").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange("()", editor.getCursor());
-            editor.focus();
-            str = ")";
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange("()", editor.getCursor());
+          editor.focus();
+          str = ")";
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          } else {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
+        } else {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("(" + selected_text + ")");
-            editor.focus();
-          }
+          editor.replaceSelection("(" + selected_text + ")");
+          editor.focus();
         }
       };
       document.getElementById("charsym6").onclick = function() {
-        if ( activeEditor.value === "editor" ) {
-          if (!editor.getSelection().split(" ").join("")) {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+        if (!editor.getSelection().split(" ").join("")) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("", editor.getCursor());
-            editor.replaceRange("[]", editor.getCursor());
-            editor.focus();
-            str = "]";
-            mynum = str.length;
-            start_cursor = editor.getCursor();  // Need to get the cursor position
-            cursorLine = start_cursor.line;
-            cursorCh = start_cursor.ch;
+          editor.replaceSelection("", editor.getCursor());
+          editor.replaceRange("[]", editor.getCursor());
+          editor.focus();
+          str = "]";
+          mynum = str.length;
+          start_cursor = editor.getCursor();  // Need to get the cursor position
+          cursorLine = start_cursor.line;
+          cursorCh = start_cursor.ch;
 
-            // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
-            editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
-            editor.replaceRange(selected_text, editor.getCursor());
-            editor.focus();
-          } else {
-            selected_text = editor.getSelection();  // Need to grab the Active Selection
+          // Code to move cursor back [x] amount of spaces. [x] is the data-val value.
+          editor.setCursor({line: cursorLine , ch : cursorCh -mynum });
+          editor.replaceRange(selected_text, editor.getCursor());
+          editor.focus();
+        } else {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-            editor.replaceSelection("[" + selected_text + "]");
-            editor.focus();
-          }
+          editor.replaceSelection("[" + selected_text + "]");
+          editor.focus();
         }
       };
       $("[data-add=sym]").on("click", function() {
-        if ( activeEditor.value === "editor" ) {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection(selected_text + this.textContent);
+        editor.focus();
+      });
+      
+      // WYSIWYG Editor for Markdown
+      document.getElementById("lorem").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("Lorem ipsum dolor sit amet, consectetur adipisicing elit. Totam impedit dolore magnam dolor, atque quia dicta voluptatum. Nam impedit distinctio, tempore molestiae voluptatibus ducimus ullam! Molestiae consectetur, recusandae labore? Cupiditate.");
+        editor.focus();
+      };
+      document.getElementById("bold").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("**" + selected_text + "**");
+        editor.focus();
+      };
+      document.getElementById("italic").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("*" + selected_text + "*");
+        editor.focus();
+      };
+      document.getElementById("strike").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("<strike>" + selected_text + "</strike>");
+        editor.focus();
+      };
+      document.getElementById("anchor").onclick = function() {
+        alertify.prompt("Enter URL Below", "",
+        function(evt, value) {
           selected_text = editor.getSelection();  // Need to grab the Active Selection
 
-          editor.replaceSelection(selected_text + this.textContent);
+          editor.replaceSelection("");
+          editor.replaceSelection("["+ selected_text +"]("+ value +")");
           editor.focus();
+        },
+        function() {
+          // User clicked cancel
+        }).set('basic', true);
+      };
+      document.getElementById("quote").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("\n  > " + selected_text.replace(/\n/g,'\n  > '));
+        editor.focus();
+      };
+      document.getElementById("code").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("`" + selected_text + "`");
+        editor.focus();
+      };
+      document.getElementById("img").onclick = function() {
+        alertify.prompt("Enter Image URL Below", "",
+        function(evt, value) {
+          selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+          editor.replaceSelection("");
+          editor.replaceSelection("!["+ selected_text +"]("+ value +")");
+          editor.focus();
+        },
+        function() {
+          // User clicked cancel
+        }).set('basic', true);
+      };
+      document.getElementById("list-ol").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        var i, len, text;
+        for (i = 0, len = selected_text.split("\n").length, text = ""; i < len; i++) {
+            text += i + 1 + ". " + selected_text.split("\n")[i] + "\n  ";
         }
-      });
+        editor.replaceSelection("\n  " + text);
+        editor.focus();
+      };
+      document.getElementById("list-ul").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("\n  - " + selected_text.replace(/\n/g,'\n  - '));
+        editor.focus();
+      };
+      document.getElementById("h1").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("# " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("h2").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("## " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("h3").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("### " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("h4").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("#### " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("h5").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("##### " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("h6").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection("###### " + selected_text);
+        editor.focus();
+      };
+      document.getElementById("hr").onclick = function() {
+        selected_text = editor.getSelection();  // Need to grab the Active Selection
+
+        editor.replaceSelection(selected_text + "\n\n----------\n\n");
+        editor.focus();
+      };
     },
-    responsiveUI   = function() {
+    responsiveUI    = function() {
       // Select active editor when clicked/touched
       $("#editor").on("mousedown touchend", function() {
         $("input[name=menubar].active").trigger("click");
-
-        if ( this.id === "editor" ) {
-          activeEditor.value = "editor";
-        }
       });
 
       // Handle Menu Dropdowns
@@ -207,7 +301,7 @@ var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
         $("input[name=menubar]:checkbox").not(this).removeClass("active").prop("checked", false);
       });
     },
-    loadFiles      = function() {
+    loadFiles       = function() {
       /**
        * Chooser (Drop Box)
        * https://www.dropbox.com/developers/dropins/chooser/js
@@ -269,7 +363,7 @@ var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
         alertify.error("The File APIs are not fully supported in this browser.");
       }
     },
-    initCollab     = function() {
+    initCollab      = function() {
       function callCollabUpdate() {
         var updatehtml = editor.getValue();
         if (TogetherJS.running) {
@@ -293,8 +387,7 @@ var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
         return false;
       });
     },
-    activeEditor   = document.querySelector("[data-action=activeEditor]"),
-    storeValues    = function() {
+    storeValues     = function() {
       // Save WeaveName Value for LocalStorage
       if ( localStorage.getItem("WeaveName")) {
         $("[data-action=weavename]").val(localStorage.getItem("WeaveName"));
@@ -325,6 +418,68 @@ var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
       $("[data-select=mode]").on("keyup change", function() {
         localStorage.setItem("WeaveMode", this.value);
       });
+    },
+    shortcutKeys    = function() {
+      // Load File
+      shortcut.add("Ctrl+O", function() {
+        $("[data-action=open-file]").trigger("click");
+      });
+      // Reload Application
+      shortcut.add("F5", function() {
+        location.reload(true);
+      });
+      shortcut.add("Ctrl+R", function() {
+        location.reload(true);
+      });
+      // New Document
+      shortcut.add("Ctrl+N", function() {
+        $("[data-action=sitetitle]").val("weave name").trigger("change");
+        editor.setValue("");
+      });
+      // Export layout hotkey
+      shortcut.add("Ctrl+S", function() {
+        $("[data-save=file]").trigger("click");
+      });
+//      window.addEventListener("keydown", function(e) {
+//        // Export as Zip (CMD+O)
+//        if ( e.metaKey && e.keyCode == 79 ) {
+//          $("[data-action=open-file]").trigger("click");
+//        }
+//        // Reload Application (CMD+R)
+//        if ( e.metaKey && e.keyCode == 82 ) {
+//          location.reload(true);
+//        }
+//        // New Document (CMD+N)
+//        if ( e.metaKey && e.keyCode == 78 ) {
+//          $("[data-action=sitetitle]").val("weave name").trigger("change");
+//          editor.setValue("");
+//        }
+//        // Export as Zip (CMD+S)
+//        if ( e.metaKey && e.keyCode == 83 ) {
+//          $("[data-save=file]").trigger("click");
+//        }
+//      });
+
+      if ( navigator.platform.indexOf('Mac') > -1 ) {
+        $("[data-action=lowercase]").attr("title", "Cmd+'");
+        $("[data-action=uppercase]").attr("title", "Cmd+\\");
+        $("[data-action=gotoline]").attr("title", "Cmd+L");
+        $("[data-action=search]").attr("title", "CMD+F");
+        $("[data-action=replace]").attr("title", "Cmd+Option+F");
+        $("[data-action=replaceall]").attr("title", "Shift+Cmd+Option+F");
+        $("[data-action=minify]").attr("title", "Shift+Cmd+'");
+        $("[data-action=tidy]").attr("title", "Shift+Cmd+\\");
+        $("[data-action=toggle_comment]").attr("title", "Cmd+/");
+      } else {
+        OtherKeyResults();
+      }
+    },
+    OtherKeyResults = function() {
+      $("[data-action=gotoline]").attr("title", "Ctrl+L");
+      $("[data-action=search]").attr("title", "CTRL+F");
+      $("[data-action=replace]").attr("title", "Shift-Ctrl-F");
+      $("[data-action=replaceall]").attr("title", "Shift-Ctrl-R");
+      $("[data-action=toggle_comment]").attr("title", "Ctrl+/");
     },
     download_to_textbox = function (url, el) {
       return $.get(url, null, function (data) {
@@ -400,7 +555,7 @@ if ( localStorage.getItem("editorData")) {
 storeValues();
 
 // Change editor's theme
-var inputTheme = document.querySelector("[data-select=theme");
+var inputTheme = document.querySelector("[data-select=theme]");
 function selectTheme() {
   var theme = inputTheme.options[inputTheme.selectedIndex].textContent;
   editor.setOption("theme", theme);
@@ -411,7 +566,7 @@ inputTheme.onchange = function() {
 selectTheme();
 
 // Change editor's mode
-var inputMode = document.querySelector("[data-select=mode");
+var inputMode = document.querySelector("[data-select=mode]");
 function selectMode() {
   var mode = inputMode.options[inputMode.selectedIndex].value;
   if (!mode) {
@@ -419,6 +574,35 @@ function selectMode() {
   }
   editor.setOption("mode", mode);
   editor.refresh();
+  
+  if ((mode === "text/x-markdown") || (mode === "text/x-gfm")) {
+    if ($("#function").is(":visible")) {
+      $("#function").hide();
+    }
+    $(".md-chars").removeClass("hide");
+    if ( $(".main-editor-chars").is(":visible") ) {
+      $(".md-chars").removeClass("hide");
+      $(".main-editor-chars").addClass("hide");
+    }
+  } else if ((mode === "text/html") || (mode === "text/x-jade") || (mode === "text/x-haml") || (mode === "application") || (mode === "text/javascript")) {
+    if ($("#function").is(":hidden")) {
+      $("#function").show();
+    }
+    $(".md-chars").addClass("hide");
+    if ( $(".main-editor-chars").is(":hidden") ) {
+      $(".md-chars").addClass("hide");
+      $(".main-editor-chars").removeClass("hide");
+    }
+  } else {
+    if ($("#function").is(":visible")) {
+      $("#function").hide();
+    }
+    $(".md-chars").addClass("hide");
+    if ( $(".main-editor-chars").is(":hidden") ) {
+      $(".md-chars").addClass("hide");
+      $(".main-editor-chars").removeClass("hide");
+    }
+  }
 }
 inputMode.onchange = function() {
   selectMode();
@@ -473,7 +657,7 @@ if (window.location.hash) {
 }
 
 // Save as a Gist Online
-document.querySelector("[data-action=save-gist]").onclick = function() {
+document.querySelector("[data-save=gist]").onclick = function() {
   $("input[name=menubar].active").trigger("click");
 
   // Return user settings
@@ -531,7 +715,25 @@ document.querySelector("[data-action=social-cancel]").onclick = function() {
   document.getElementById("clearSharePreview").innerHTML = "";
 };
 
+// Save editor's code as file
+document.querySelector("[data-save=file]").onclick = function() {
+  alertify.prompt("File name & type below!", "",
+  function(evt, value) {
+    blob = new Blob([ editor.getValue() ], {type: inputMode.value});
+    saveAs(blob, value);
+  },
+  function() {
+    // User clicked cancel
+  }).set('basic', true);
+};
+
+// Clear editor's code
+document.querySelector("[data-code=clear]").onclick = function() {
+  editor.setValue("");
+};
+
 charGeneration();
+shortcutKeys();
 
 // Scroll Character Menu
 (function() {
