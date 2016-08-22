@@ -733,6 +733,7 @@ document.querySelector("[data-save=file]").onclick = function() {
 // Clear editor's code
 document.querySelector("[data-code=clear]").onclick = function() {
   editor.setValue("");
+  editor.focus();
 };
 
 responsiveUI();
