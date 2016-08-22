@@ -237,6 +237,7 @@ nav {
   font-size: 2em;
   text-align: center;
   overflow: auto;
+  background: #fff;
 }
 .editoricons a {
   display: block;
@@ -286,15 +287,17 @@ nav {
   position: absolute;
   top: 60px;
   display: block;
-  width: 100vw;
+  width: calc(100vw - 50px);
   z-index: 0;
 }
 .CodeMirror, .CodeMirror-gutters {
   height: calc(100vh - 60px);
 }
+/*
 .CodeMirror-code {
   padding-right: 50px;
 }
+*/
 .lint-error {
   font-family: arial;
   font-size: 70%;

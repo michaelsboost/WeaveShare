@@ -31,6 +31,7 @@ To-Do
 
  - If file is loaded automatically set mode to fit the file type (ex. index.js = javascript)
  - Integrate lints for other languages (haml, livescript, typescript, etc:)
+ - When you save a file automatically detect the file type based upon the mode that's selected
 
 Development
 -------------
