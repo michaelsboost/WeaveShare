@@ -702,7 +702,7 @@ document.querySelector("[data-save=gist]").onclick = function() {
     $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//mikethedj4.github.io/WeaveShare/%23" + hash);
     $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20"+ document.querySelector("[data-action=weavename]").value.split(" ").join("%20") +"%20%23weave%20on%20%23WeaveShare%20%20-%20https%3A//mikethedj4.github.io/WeaveShare/%23"+ hash);
     $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//mikethedj4.github.io/WeaveShare/%23" + hash);
-    $(".share-instagram").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/WeaveShare/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23WeaveShare%3A%20&summary=&source=");
+    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//mikethedj4.github.io/WeaveShare/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23WeaveShare%3A%20&summary=&source=");
     $("[data-action=socialdialog]").fadeIn();
 
     // Let user view gist
