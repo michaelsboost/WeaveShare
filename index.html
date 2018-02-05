@@ -23,6 +23,17 @@
     <script src="libraries/jquery/jquery.js"></script>
     <script src="libraries/alertifyjs/alertify.min.js"></script>
     
+    <script src="libraries/jsbeautify/beautify.js"></script>
+    <script src="libraries/jsbeautify/beautify-css.js"></script>
+    <script src="libraries/jsbeautify/beautify-html.js"></script>
+    <script src="libraries/jsbeautify/unpackers/javascriptobfuscator_unpacker.js"></script>
+    <script src="libraries/jsbeautify/unpackers/urlencode_unpacker.js"></script>
+    <script src="libraries/jsbeautify/unpackers/p_a_c_k_e_r_unpacker.js"></script>
+    <script src="libraries/jsbeautify/unpackers/myobfuscate_unpacker.js"></script>
+    <script src="lib/htmlTidy.js"></script>
+    <script src="lib/cssTidy.js"></script>
+    <script src="lib/jsTidy.js"></script>
+    
     <script src="lib/Blob.js"></script>
     <script src="lib/FileSaver.js"></script>
 
@@ -210,6 +221,7 @@
     <script src="libraries/codemirror/jshint.js"></script>
     <script src="libraries/codemirror/coffee-script.js"></script>
     <script src="libraries/codemirror/coffeelint.js"></script>
+    <script src="libraries/jsonlint/lib/jsonlint.js"></script>
 
     <script src="https://www.dropbox.com/static/api/2/dropins.js" id="dropboxjs" data-app-key="iggmggls28vuvif"></script>
 
@@ -553,6 +565,10 @@
     <input type="checkbox" id="selectEditor" class="invisible">
     <div id="editor"></div>
     <div class="editoricons">
+      <!-- Beautify Code if Applicable -->
+      <a data-beautify="code" class="hide">
+        <span class="fa fa-magic"></span>
+      </a>
       <!-- Clear Code -->
       <a data-code="clear">
         <span class="fa fa-times"></span>
@@ -567,8 +583,12 @@
          <a href="https://github.com/michaelsboost/WeaveShare" target="_blank">
           <span class="fa fa-github"></span>
         </a>
-        <!-- Donate to the project -->
-        <a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=BSYGA2RB5ZJCC" target="_blank">
+        <!-- Donate to the project via SquareCash -->
+        <a href="https://cash.me/$michaelsboost" target="_blank">
+          <span class="fa fa-credit-card"></span>
+        </a>
+        <!-- Donate to the project via PayPal -->
+        <a href="https://www.paypal.com/cgi-bin/webscr?business=mikethedj4%40yahoo.com&amp;cmd=_xclick&amp;amount=5.0&amp;item_name=Donation&amp;currency_code=USD" target="_blank">
           <span class="fa fa-paypal"></span>
         </a>
       </div>
@@ -610,6 +630,25 @@
             </div>
           </div>
         </nav>
+      </div>
+    </div>
+    
+    <!-- Donate Dialog -->
+    <div class="fixedfill donatebanner" style="display: none;">
+      <div class="table">
+        <div class="cell">
+          <h2 style='margin-bottom: -1em;position: relative;z-index: 1;color: #999da1;letter-spacing: 1px;font-weight: 100;font-size: 1.5em;font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;'>Your donation helps keep WeaveShare free!</h2>
+          <img class="loading" src="img/donate.svg" style="margin: auto; display: block;">
+
+          <div style="width: 357px;margin: -30px auto;display: inline-block;">
+            <a data-close="donation" href="javascript:void(0)">
+              <img src="img/no.svg" style="float: left; height: 56px;">
+            </a>
+            <a data-close="donation" href="https://www.paypal.com/cgi-bin/webscr?business=mikethedj4%40yahoo.com&amp;cmd=_xclick&amp;amount=5.0&amp;item_name=Donation&amp;currency_code=USD" target="_blank">
+              <img src="img/yes.svg" style="float: right; height: 56px;">
+            </a>
+          </div>
+        </div>
       </div>
     </div>
    

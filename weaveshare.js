@@ -1,4 +1,4 @@
-var selected_text, str, mynum, start_cursor, cursorLine, cursorCh,
+var selected_text, str, mynum, start_cursor, cursorLine, cursorCh, mode,
     charGeneration  = function() {
       document.getElementById("restartapp").onclick = function() {
         location.reload(true);
@@ -572,7 +572,7 @@ selectTheme();
 // Change editor's mode
 var inputMode = document.querySelector("[data-select=mode]");
 function selectMode() {
-  var mode = inputMode.options[inputMode.selectedIndex].value;
+  mode = inputMode.options[inputMode.selectedIndex].value;
   if (!mode) {
     editor.setOption("mode", "plain text");
   }
@@ -581,6 +581,7 @@ function selectMode() {
   editor.setOption("lint", false);
   editor.setOption("lint", true);
   
+  // Adjust characters to editor's mode for HTML/CSS/JS and Markdown
   if ((mode === "text/x-markdown") || (mode === "text/x-gfm")) {
     if ($("#function").is(":visible")) {
       $("#function").hide();
@@ -609,11 +610,34 @@ function selectMode() {
       $(".main-editor-chars").removeClass("hide");
     }
   }
+  
+  // Only Show beautify code button when HTML/CSS/JS and JSON is selected
+  if ((mode === "text/html") || (mode === "application/x-httpd-php")) {
+    $("[data-beautify=code]").removeClass("hide");
+  } else if ((mode === "text/css")) {
+    $("[data-beautify=code]").removeClass("hide");
+  } else if ((mode === "application/json") || (mode === "text/javascript")) {
+    $("[data-beautify=code]").removeClass("hide");
+  } else {
+    $("[data-beautify=code]").addClass("hide");
+  }
 }
 inputMode.onchange = function() {
   selectMode();
 };
 selectMode();
+
+// Beautify users code for HTML/CSS/JS/JSON
+$("[data-beautify=code]").click(function() {
+  mode = inputMode.options[inputMode.selectedIndex].value;
+  if ((mode === "text/html") || (mode === "application/x-httpd-php")) {
+    beautifyHTML();
+  } else if ((mode === "text/css")) {
+    beautifyCSS();
+  } else if ((mode === "application/json") || (mode === "text/javascript")) {
+    beautifyJS();
+  }
+});
 
 var hash = window.location.hash.substring(1);
 function loadgist(gistid) {
@@ -662,6 +686,9 @@ if (window.location.hash) {
 // Save as a Gist Online
 document.querySelector("[data-save=gist]").onclick = function() {
   $("input[name=menubar].active").trigger("click");
+  
+  // Show Donate Dialog
+  $(".donatebanner").fadeIn();
 
   // Return user settings
   var sArr = {
@@ -712,6 +739,12 @@ document.querySelector("[data-save=gist]").onclick = function() {
     alertify.error("Error: Could not save weave!");
   });
 };
+
+// Hide Donate Dialog
+$("[data-close=donation]").click(function () {
+  $(".donatebanner").fadeOut();
+});
+
 // Cancel Social Sharing
 document.querySelector("[data-action=social-cancel]").onclick = function() {
   $("[data-action=socialdialog]").fadeOut();
