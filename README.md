@@ -26,16 +26,17 @@ WeaveShare uses a number of open source projects to work properly:
 * [Emmet](http://emmet.io/) - Codemirror Plugin for Zen Coding
 * [AlertifyJS](http://alertifyjs.com/) - For the awesome and stylish alert notification dialogs
 
-To-Do
--------------
-
- - If file is loaded automatically set mode to fit the file type (ex. index.js = javascript)
- - Integrate lints for other languages (haml, livescript, typescript, etc:)
- - When you save a file automatically detect the file type based upon the mode that's selected
-
 Development
 -------------
 
-WeaveShare was created by [Michael Schwartz](http://michaelsboost.github.io/).  
+As of Mar 21, 2018 Github updated their API on Gists. In which you can [no longer save gists anonymously](https://help.github.com/articles/creating-gists).
 
-You can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
+If you try to save a gist anonymously you will be presented with a 404.
+
+![screen shot 2018-04-01 at 9 17 21 pm](https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png)
+
+WeaveShare relied on Github Gists to save your weave anonymously to the community. Do to this update WeaveShare is officially a discontinued project as of March 31, 2018.
+
+WeaveShare, created by [Michael Schwartz](http://michaelsboost.github.io/).  
+
+If you like WeaveShare or it was at all helpful for you, you can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)

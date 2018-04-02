@@ -689,60 +689,13 @@ document.querySelector("[data-save=gist]").onclick = function() {
   
   // Show Donate Dialog
   $(".donatebanner").fadeIn();
-
-  // Return user settings
-  var sArr = {
-    "weaveName"     : document.querySelector("[data-action=weavename]").value,
-    "editorFontSize": document.querySelector("[data-editor=fontSize]").value,
-    "theme"         : document.querySelector("[data-select=theme]").value,
-    "mode"          : document.querySelector("[data-select=mode]").value
-  };
-
-  var files = {};
-	if (editor.getValue()) {
-      files["code"] = editor.getValue() ? { content: editor.getValue() } : null;
-	}
-	files["settings.json"] = { "content": JSON.stringify(sArr) };
-
-  data = {
-    "public": true,
-    "files": files
-  };
-  
-  // Post on Github via JQuery Ajax
-  $.ajax({
-    url: "https://api.github.com/gists",
-    type: "POST",
-    dataType: "json",
-    data: JSON.stringify(data)
-  }).success(function(e) {
-    window.location.hash = e.html_url.split("https://gist.github.com/").join("");
-    hash = window.location.hash.replace(/#/g,"");
-    
-    embedProject = e.html_url.split("https://gist.github.com/").join("");
-    // document.querySelector("[data-output=projectURL]").value = "https://gist.github.com/" + embedProject;
-    document.querySelector("[data-output=projectURL]").value = window.location.href;
-    document.querySelector("[data-output=projectURL]").onclick = function() {
-      this.select(true);
-    };
-
-    $(".share-facebook").attr("href", "https://www.facebook.com/sharer/sharer.php?u=https%3A//michaelsboost.github.io/WeaveShare/%23" + hash);
-    $(".share-twitter").attr("href", "https://twitter.com/home?status=Checkout%20my%20"+ document.querySelector("[data-action=weavename]").value.split(" ").join("%20") +"%20%23weave%20on%20%23WeaveShare%20%20-%20https%3A//michaelsboost.github.io/WeaveShare/%23"+ hash);
-    $(".share-gplus").attr("href", "https://plus.google.com/share?url=https%3A//michaelsboost.github.io/WeaveShare/%23" + hash);
-    $(".share-linkedin-square").attr("href", "https://www.linkedin.com/shareArticle?mini=true&url=https%3A//michaelsboost.github.io/WeaveShare/%23"+ hash +"&title=Checkout%20my%20%23weave%20on%20%23WeaveShare%3A%20&summary=&source=");
-    $("[data-action=socialdialog]").fadeIn();
-
-    // Let user view gist
-    alertify.success("Your weave is saved!");
-  }).error(function(e) {
-    console.warn("Error: Could not save weave!", e);
-    alertify.error("Error: Could not save weave!");
-  });
 };
 
 // Hide Donate Dialog
 $("[data-close=donation]").click(function () {
   $(".donatebanner").fadeOut();
+  
+  alertify.alert("WeaveShare Discontinued:", "As of Mar 21, 2018 Github updated their API on Gists. In which you can <a href='https://help.github.com/articles/creating-gists' target='_blank'>no longer save gists anonymously</a>.<br><br>If you try to save a gist anonymously you will be presented with a 404 as seen on Dabblet.com.<br><br><img src='https://user-images.githubusercontent.com/2473707/38180483-933e0d50-35f2-11e8-8e24-0cca98d4f4db.png'><br><br>WeaveShare relied on Github Gists to save your weave anonymously to the community. Do to this update WeaveShare is officially a discontinued project as of March 31, 2018.");
 });
 
 // Cancel Social Sharing
