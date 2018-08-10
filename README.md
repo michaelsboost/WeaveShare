@@ -40,3 +40,5 @@ WeaveShare relied on Github Gists to save your weave anonymously to the communit
 WeaveShare, created by [Michael Schwartz](http://michaelsboost.github.io/).  
 
 If you like WeaveShare or it was at all helpful for you, you can show your appreciation by [Donating via SquareCash](https://cash.me/$michaelsboost) and/or [PayPal](https://www.paypal.me/mikethedj4)
+
+[![ko-fi](https://az743702.vo.msecnd.net/cdn/kofi2.png?v=0)](https://ko-fi.com/michaelsboost)
